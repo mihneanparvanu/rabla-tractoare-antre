@@ -30,7 +30,7 @@ interface FilledButtonProps {
 }
 
 export function FilledButton ({buttonText, bgColor, icon}: FilledButtonProps){
-  const buttonClasses = `font-normal ${bgColor} py-2 px-2 flex flex-row gap-1 w-fit`
+  const buttonClasses = `${bgColor} py-2 px-2 flex flex-row gap-1 w-fit`
   return (
     <button className={buttonClasses}>
     {icon}

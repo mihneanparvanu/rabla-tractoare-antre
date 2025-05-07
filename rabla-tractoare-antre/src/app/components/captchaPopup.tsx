@@ -24,7 +24,5 @@ export default function capchaPopup() {
 
 export function popupButton () {
     const buttonClasses = ''
-    <button>
 
-    </button>
 }
