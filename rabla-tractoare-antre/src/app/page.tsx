@@ -1,21 +1,14 @@
 'use client'
-import Image from "next/image";
-import React, { useEffect } from "react";
-import Router, { useRouter } from "next/navigation";
+import  { useRouter } from "next/navigation";
 import { useState, useRef } from "react";
 import { DownloadIcon } from "./icons/downloadIcon";
 import { UploadIcon } from "./icons/uploadIcon";
 import CaptchaPopup from "./components/captchaPopup";
-import { useTimer } from "./components/Timer";
 import FilledButton from "./components/FilledButton";
 
 export default function Home() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const handleClick = () => {
-    openCaptcha()
-  }
- const timer = useTimer()
-
+   
   const handleFileUpload = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();

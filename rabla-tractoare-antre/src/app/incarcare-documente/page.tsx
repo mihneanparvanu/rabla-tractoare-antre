@@ -1,8 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
 import CaptchaPopup from '../components/captchaPopup';
-import { useRouter } from 'next/navigation';
-import { useTimer } from '../components/Timer';
 import SuccessPopup from '../components/SuccessPopup';
 import UploadButton from '../components/UploadButton';
 
@@ -93,11 +91,7 @@ export default function IncarcareDocumente() {
   const [acknowledgedGuideline, setAcknowledgedGuideline] = useState(false);
   const [isCaptchaOpen, setIsCaptchaOpen] = useState(false);
   const [isSuccessVisible, setIsSuccessVisible] = useState(false)
-  const router = useRouter()
-  const timer = useTimer()
  const hasUploadedCF = localStorage.getItem('hasUploadedCF')             
-
-
 
 
   const toggleDocumentCollapse = () => {
@@ -122,10 +116,8 @@ export default function IncarcareDocumente() {
   const showSuccess = () => {
     setIsSuccessVisible(true)
   }
-  const hideSuccess = () => {
-    setIsSuccessVisible(false)
-  }
-
+ 
+  
   const onSucces = () => {
     showSuccess()
   }

@@ -1,6 +1,6 @@
 'use client'
 import React from "react"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useTimer } from "./Timer"
 import { useRouter } from "next/navigation"
 

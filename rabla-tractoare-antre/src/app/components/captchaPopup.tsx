@@ -13,11 +13,6 @@ const CaptchaPopup: React.FC<CaptchaProps> = ({isOpen, onClose, onConfirm }) => 
     const [userInput, setUserInput] = useState('');
     const [message, setMessage] = useState('');
 
-
-    const handleOpenPopup = () => {
-        setMessage(''); 
-    };
-
     const handleClosePopup = () => {
         onClose();
         setUserInput('');
