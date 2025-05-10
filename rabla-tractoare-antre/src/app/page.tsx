@@ -1,6 +1,6 @@
 'use client'
 import  { useRouter } from "next/navigation";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { DownloadIcon } from "./icons/downloadIcon";
 import { UploadIcon } from "./icons/uploadIcon";
 import CaptchaPopup from "./components/captchaPopup";
@@ -15,6 +15,12 @@ export default function Home() {
     }
   }
   const [isCaptchaOpen, setIsCaptchaOpen] = useState(false);
+
+  const [hasUploadedCF, setHasUploadedCF] = useState(false);
+  useEffect(() => {
+  const stored = localStorage.getItem('hasUploadedCF');
+  setHasUploadedCF(stored === 'true');
+}, []);
 
 
   const openCaptcha = () => {

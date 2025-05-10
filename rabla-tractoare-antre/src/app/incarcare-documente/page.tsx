@@ -33,7 +33,6 @@ function DocumentItem({ id, filename, description, alreadyHasUpload = false}: Do
      }
   }
 
-
   const handleFileInput = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click()
@@ -93,7 +92,6 @@ export default function IncarcareDocumente() {
   const [isSuccessVisible, setIsSuccessVisible] = useState(false)
  const hasUploadedCF = localStorage.getItem('hasUploadedCF')             
 
-
   const toggleDocumentCollapse = () => {
     setIsDocumentCollapsed(!isDocumentCollapsed);
   };
@@ -116,8 +114,7 @@ export default function IncarcareDocumente() {
   const showSuccess = () => {
     setIsSuccessVisible(true)
   }
- 
-  
+   
   const onSucces = () => {
     showSuccess()
   }
@@ -147,8 +144,7 @@ export default function IncarcareDocumente() {
           
   return (
     <div className="container pt-40 py-8">
-      
-        <CaptchaPopup
+              <CaptchaPopup
           isOpen={isCaptchaOpen}
           onClose={closeCaptcha}
           onConfirm={onSucces}
