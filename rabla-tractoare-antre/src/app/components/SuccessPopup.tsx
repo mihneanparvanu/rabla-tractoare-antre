@@ -16,7 +16,9 @@ const timer = useTimer()
 const reset = () => {
     router.push('/')
     localStorage.clear()
-       timer.resetTimer()
+    if (timer) {
+timer.resetTimer()
+    }
 }
 
   useEffect(() => {

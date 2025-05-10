@@ -7,8 +7,7 @@ interface FilledButtonProps {
 
 
 
-export function FilledButton({ buttonText, bgColor, icon, onClick }: FilledButtonProps) {
-
+export default function FilledButton({ buttonText, bgColor, icon, onClick }: FilledButtonProps) {
   const buttonClasses = `${bgColor} text-white rounded py-2 px-3 flex flex-row gap-1 w-fit cursor-pointer`
  return (
    <button onClick={onClick} className={buttonClasses}>

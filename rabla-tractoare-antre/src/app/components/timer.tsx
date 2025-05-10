@@ -7,8 +7,6 @@ const TimerContext = createContext(null);
 export const useTimer = () => useContext(TimerContext)
 
 
-
-
 export default function Timer({ children }: { children: React.ReactNode }) {
     const [time, setTime] = useState(0)
     const [running, setIsRunning] = useState(true)
@@ -60,7 +58,7 @@ export default function Timer({ children }: { children: React.ReactNode }) {
     return (
         <TimerContext.Provider value={{ time, running, startTimer, stopTimer, resetTimer, format }}>
             <div className="w-full flex flex-col items-center">
-                <div className=  {`${bg} fixed py-2 w-[10%] pl-2 pr-4 rounded-full border-[2px] border-neutral-200 top-5 left-5 flex justify-between items-center gap-4 z-50`}>
+                <div className=  {`${bg} fixed py-2 px-5 pl-2 pr-4 rounded-full border-[2px] border-neutral-200 top-5 left-5 flex justify-between items-center gap-4 z-50`}>
 
                     <div className="py-3 px-3 bg-white/20 rounded-full">
                         <TimerIcon

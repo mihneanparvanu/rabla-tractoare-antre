@@ -7,7 +7,7 @@ import { DownloadIcon } from "./icons/downloadIcon";
 import { UploadIcon } from "./icons/uploadIcon";
 import CaptchaPopup from "./components/captchaPopup";
 import { useTimer } from "./components/timer";
-import { FilledButton } from "./components/FilledButton";
+import FilledButton from "./components/FilledButton";
 
 export default function Home() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -16,9 +16,8 @@ export default function Home() {
   }
  const timer = useTimer()
 
-  useEffect(()=> {
-    timer.startTimer()
-  },[timer])
+ 
+ 
 
 
   const handleFileUpload = () => {
