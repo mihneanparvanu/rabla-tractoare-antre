@@ -2,19 +2,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CaptchaPopup from '../components/captchaPopup';
 import { useRouter } from 'next/navigation';
-import { useTimer } from '../components/timer';
+import { useTimer } from '../components/Timer';
 import SuccessPopup from '../components/SuccessPopup';
 import UploadButton from '../components/UploadButton';
 
+interface DocumentItem {
+  id: string;
+  filename: string;
+  description: string;
+  alreadyHasUpload?: boolean;
+}
 
-function DocumentItem({ id, filename, description, alreadyHasUpload = false}) {
+function DocumentItem({ id, filename, description, alreadyHasUpload = false}: DocumentItem) {
   const [hasUploaded, setHasUploaded] = useState(false)
   const [size, setSize] = useState('')
   const [name, setName] = useState('')
-  const fileInputRef = useRef(id)
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const onFileUpload = (event) => {
-    const file = event.target.files[0]
+  const onFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
     if (file && file.type === 'application/pdf') {
       setHasUploaded(true)
       const displaySize = `${(file.size / (1024 * 1024)).toFixed(2)} MB`
@@ -41,8 +47,6 @@ function DocumentItem({ id, filename, description, alreadyHasUpload = false}) {
      <p className = " text-white bg-primaryGreen py-2 px-5 rounded-md">  
      Încărcat
      </p> 
-
-       
     )
   }
 
@@ -73,7 +77,11 @@ function DocumentItem({ id, filename, description, alreadyHasUpload = false}) {
 }
 
 
-const HistoryItem = ({ date, event }) => (
+interface HistoryItemProps {
+  date: string;
+  event: string;
+}
+const HistoryItem = ({ date, event }: HistoryItemProps) => (
   <div className="mb-2">
     <span className="text-sm text-gray-700">{date}</span> <span className="text-sm text-gray-600">{event}</span>
   </div>
@@ -100,7 +108,7 @@ export default function IncarcareDocumente() {
     setIsHistoryCollapsed(!isHistoryCollapsed);
   };
 
-  const handleAcknowledgeChange = (event) => {
+  const handleAcknowledgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAcknowledgedGuideline(event.target.checked);
   };
 

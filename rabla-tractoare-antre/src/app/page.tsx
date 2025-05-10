@@ -6,7 +6,7 @@ import { useState, useRef } from "react";
 import { DownloadIcon } from "./icons/downloadIcon";
 import { UploadIcon } from "./icons/uploadIcon";
 import CaptchaPopup from "./components/captchaPopup";
-import { useTimer } from "./components/timer";
+import { useTimer } from "./components/Timer";
 import FilledButton from "./components/FilledButton";
 
 export default function Home() {
@@ -15,10 +15,6 @@ export default function Home() {
     openCaptcha()
   }
  const timer = useTimer()
-
- 
- 
-
 
   const handleFileUpload = () => {
     if (fileInputRef.current) {
@@ -37,11 +33,10 @@ export default function Home() {
 
 
   const router = useRouter()
-  const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-       setSelectedFile(file);
+
+  const handleFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
       localStorage.setItem('hasUploadedCF', 'true')
       router.push('/incarcare-documente');

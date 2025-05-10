@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Timer from "./components/timer";
+import Timer from "./components/Timer";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
