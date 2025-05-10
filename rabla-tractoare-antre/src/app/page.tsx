@@ -1,42 +1,110 @@
+'use client'
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
+import Router, { useRouter } from "next/navigation";
+import { useState, useRef } from "react";
 import { DownloadIcon } from "./icons/downloadIcon";
 import { UploadIcon } from "./icons/uploadIcon";
-export default function Home () {
+import CaptchaPopup from "./components/captchaPopup";
+import { useTimer } from "./components/timer";
+import { FilledButton } from "./components/FilledButton";
+
+export default function Home() {
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const handleClick = () => {
+    openCaptcha()
+  }
+ const timer = useTimer()
+
+  useEffect(()=> {
+    timer.startTimer()
+  },[timer])
+
+
+  const handleFileUpload = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  }
+  const [isCaptchaOpen, setIsCaptchaOpen] = useState(false);
+
+
+  const openCaptcha = () => {
+    setIsCaptchaOpen(true);
+  }
+  const closeCaptcha = () => {
+    setIsCaptchaOpen(false);
+  }
+
+
+  const router = useRouter()
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+       setSelectedFile(file);
+    if (file) {
+      localStorage.setItem('hasUploadedCF', 'true')
+      router.push('/incarcare-documente');
+    }
+  }
+
   return (
-    <div className="flex flex-col md:gap-1 lg:gap-2 xl:gap-4">
-     <FilledButton 
-     buttonText={'Descarcă model cerere de finanțare'}
-    bgColor={'bg-primaryBlue'}
-     icon = {<DownloadIcon className = 'w-5 h-5' />} 
-     />     
-    <FilledButton
-    buttonText={'Încarcă cererea completată'}
-    bgColor={'bg-primaryGreen'}
-    icon = {<UploadIcon className = 'w-5 h-5'/>}
-    />
+    <div className="w-[80%] pt-20">
+      <div className=" flex flex-col items-center py-4 gap-2">
+        <h1 className="text-3xl font-medium ">
+          Site de antrenament pentru programul Rabla Tractoare 2025
+        </h1>
+        <a href="https://revolut.me/mihneanparvanu"
+          target="_blank"
+          className="cursor-pointer text-primaryGreen"
+        >
+          Puteți să-mi mulțumiți pe Revolut :D
+        </a>
 
-     
-     
 
+      </div>
+
+
+      <div className="flex flex-col h-[500px] justify-between items-center  bg-surface-base border-[1px] border-neutral-300 rounded-lg  py-6 md:gap-1 lg:py-20 gap-20 xl:gap-24 px-6">
+        <div className="flex justify-between w-full">
+          <a href="/CF_Antrenament.pdf" download='CF_Antrenament.pdf'>
+            <FilledButton
+              buttonText={'Descarcă model cerere de finanțare'}
+              bgColor={'bg-primaryBlue'}
+              icon={<DownloadIcon className='w-5 h-5' />}
+            />
+          </a>
+          <input className="hidden"
+            type="file"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+          />
+          <FilledButton
+            buttonText={'Încarcă cererea completată'}
+            bgColor={'bg-primaryGreen'}
+            icon={<UploadIcon className='w-5 h-5' />}
+            onClick={openCaptcha}
+          />
+        </div>
+        <div className="fixed top-8 w-full flex justify-center items-center">
+          <CaptchaPopup
+            isOpen={isCaptchaOpen}
+            onClose={closeCaptcha}
+            onConfirm={
+              handleFileUpload
+            }
+          />
+        </div>
+      </div>
     </div>
   )
 }
 
-interface FilledButtonProps {
-  buttonText: string;
-  bgColor?: string;
-  icon?: React.ReactNode 
-}
 
-export function FilledButton ({buttonText, bgColor, icon}: FilledButtonProps){
-  const buttonClasses = `${bgColor} py-2 px-2 flex flex-row gap-1 w-fit`
-  return (
-    <button className={buttonClasses}>
-    {icon}
-    {buttonText}
-  </button>
-  )
-}
+
  
  
+ 
+
+

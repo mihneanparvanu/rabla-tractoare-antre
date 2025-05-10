@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #E4E8EC;
+  --foreground: #0E0E0E;
+  --surface-base: #FFFFFF;
 }
 
 @theme inline {
@@ -14,11 +14,15 @@
   --font-mono: var(--font-geist-mono);
   --color-primaryBlue: #007AFF;
   --color-primaryGreen: #29A646;
+  --color-secondaryGreen: #04CD98;
+  --color-surface-base: var(--surface-base);
+  --color-nextRed: #B13A37;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --surface-base: #1E1E1E;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -26,5 +30,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Raleway, sans-serif;
+  font-family: Open-Sans, sans-serif;
 }

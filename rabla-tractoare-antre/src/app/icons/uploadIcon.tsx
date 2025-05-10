@@ -11,12 +11,12 @@ export const UploadIcon: React.FC<uploadIconProps> = ({ className }) => (
     >
         <rect y="25" width="55.2" height="23" fill="white" />
         <g filter="url(#filter0_d_563_18)">
-            <line x1="28.5" y1="37" x2="28.5" y2="16" stroke="white" stroke-width="13" />
+            <line x1="28.5" y1="37" x2="28.5" y2="16" stroke="white" strokeWidth="13" />
         </g>
         <path d="M28 3.14722e-06L43.5885 18L12.4115 18L28 3.14722e-06Z" fill="white" />
         <defs>
-            <filter id="filter0_d_563_18" x="19.2" y="15.6" width="18.6" height="26.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <filter id="filter0_d_563_18" x="19.2" y="15.6" width="18.6" height="26.6" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                 <feOffset dy="2.4" />
                 <feGaussianBlur stdDeviation="1.4" />
