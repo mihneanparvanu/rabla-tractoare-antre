@@ -15,8 +15,8 @@ export default function Home() {
     }
   }
   const [isCaptchaOpen, setIsCaptchaOpen] = useState(false);
-
   const [hasUploadedCF, setHasUploadedCF] = useState(false);
+  
   useEffect(() => {
   const stored = localStorage.getItem('hasUploadedCF');
   setHasUploadedCF(stored === 'true');
@@ -30,13 +30,13 @@ export default function Home() {
     setIsCaptchaOpen(false);
   }
 
-
   const router = useRouter()
 
 
   const handleFileChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      setHasUploadedCF(true)
       localStorage.setItem('hasUploadedCF', 'true')
       router.push('/incarcare-documente');
     }

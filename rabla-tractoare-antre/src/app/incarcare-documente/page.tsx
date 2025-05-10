@@ -90,7 +90,13 @@ export default function IncarcareDocumente() {
   const [acknowledgedGuideline, setAcknowledgedGuideline] = useState(false);
   const [isCaptchaOpen, setIsCaptchaOpen] = useState(false);
   const [isSuccessVisible, setIsSuccessVisible] = useState(false)
- const hasUploadedCF = localStorage.getItem('hasUploadedCF')             
+  const [hasUploadedCF, setHasUploadedCF] = useState(false);
+
+  useEffect(() => {
+  const stored = localStorage.getItem('hasUploadedCF');
+  setHasUploadedCF(stored === 'true');
+}, []);
+   
 
   const toggleDocumentCollapse = () => {
     setIsDocumentCollapsed(!isDocumentCollapsed);
@@ -194,7 +200,7 @@ export default function IncarcareDocumente() {
         <div className={`overflow-hidden transition-max-height duration-300 ${isDocumentCollapsed ? 'max-h-0' : 'max-h-screen'}`}>
           <div className="p-3">
             <DocumentItem id='CF'
-            alreadyHasUpload = {hasUploadedCF == 'true' ? true : false }
+            alreadyHasUpload = {hasUploadedCF ? true : false }
               filename="CF AFM Tractoare"
               description="Cerere AFM de finantare completata integral prin tehnoredactare."
               
