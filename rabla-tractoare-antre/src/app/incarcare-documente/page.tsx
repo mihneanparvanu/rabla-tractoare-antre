@@ -66,6 +66,7 @@ function DocumentItem({ id, filename, description, alreadyHasUpload = false}: Do
         onClick={handleFileInput}
         onChange={onFileUpload}
         id={id}
+        name = {id}
         fileInputRef={fileInputRef}
         />        }
       </div>
