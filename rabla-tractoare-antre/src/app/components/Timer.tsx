@@ -39,7 +39,7 @@ export default function Timer({ children }: { children: React.ReactNode }) {
   };
 
   const format = (time: number) => {
-    let minutes: string | number = Math.floor(time / 60 / 60 % 60);
+    let minutes: string | number = Math.floor(time / 60);
     let seconds: string | number = Math.floor(time % 60);
 
     minutes = minutes < 10 ? '0' + minutes : minutes;

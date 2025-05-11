@@ -38,7 +38,7 @@ timer.resetTimer()
                 <h1 className="text-6xl">
                     Succes!
                 </h1>
-                <p>Ai reușit să depui în {timer.time} {timer.time < 20 ? '' : 'de'} secunde.</p>
+                <p>Ai reușit să depui în {timer.format(timer.time)}.</p> 
             </div>
             <button className="bg-primaryGreen text-white rounded hover:bg-green-700 cursor-pointer py-2 px-5"
             onClick={reset}
