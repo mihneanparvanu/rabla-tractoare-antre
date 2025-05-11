@@ -5,6 +5,7 @@ import { DownloadIcon } from "./icons/downloadIcon";
 import { UploadIcon } from "./icons/uploadIcon";
 import CaptchaPopup from "./components/captchaPopup";
 import FilledButton from "./components/FilledButton";
+import { useTimer } from "./components/Timer";
 
 export default function Home() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -22,7 +23,13 @@ export default function Home() {
   setHasUploadedCF(stored === 'true');
 }, []);
 
+const timer = useTimer()
 
+useEffect(()=>{
+  if (!timer.running) {
+    timer.startTimer()
+  }
+}, []);
   const openCaptcha = () => {
     setIsCaptchaOpen(true);
   }
